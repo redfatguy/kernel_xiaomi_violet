@@ -57,7 +57,8 @@ objdir="${kernel_dir}/out"
 anykernel=$HOME/anykernel
 builddir="${kernel_dir}/build"
 ZIMAGE=$kernel_dir/out/arch/arm64/boot/Image.gz-dtb
-kernel_name="xcalibur-v3.0-violet-kernelsu"
+kernel_name="xcalibur-v3.1-violet-legacy-kernelsu"
+variant="Legacy"
 support="Android 13(T)-14(U)"
 commit_head=$(git log --oneline -1)
 zip_name="$kernel_name-$(date +"%d%m%Y-%H%M").zip"
@@ -74,7 +75,7 @@ git submodule init && git submodule update
 
 #start off by sending a trigger msg
 tg_post_sticker
-tg_post_msg "<b>Kernel Build Triggered (KSU) ⌛</b>%0A<b>===============</b>%0A<b>Kernel : </b><code>$kernel_name</code>%0A<b>Support : </b><code>$support</code>%0A<b>Machine : </b><code>$os</code>%0A<b>Cores : </b><code>$cores</code>%0A<b>Time : </b><code>$time</code>%0A<b>Top Commit : </b><code>$commit_head</code>"
+tg_post_msg "<b>Build Triggered (KSU) ⌛</b>%0A<b>Kernel : </b><code>$kernel_name</code>%0A<b>Support : </b><code>$support</code>%0A<b>Variant : </b><code>$variant</code>%0A<b>Machine : </b><code>$os</code>%0A<b>Cores : </b><code>$cores</code>%0A<b>Time : </b><code>$time</code>%0A<b>Top Commit : </b><code>$commit_head</code>"
 
 if ! [ -d "$TC_DIR" ]; then
     echo "Toolchain not found! Cloning to $TC_DIR..."
