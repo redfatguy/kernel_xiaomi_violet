@@ -19,7 +19,7 @@ BOT_STICKER_URL="https://api.telegram.org/bot${TOKEN}/sendSticker"
 
 # Build Machine details
 cores=$(nproc --all)
-os=$(cat /etc/issue)
+os=$(cat /etc/issue | awk '{print $1, $2, $3}' | awk '{$1=$1};1' | sed 's/\\n//g')
 time=$(TZ="Asia/Kolkata" date "+%a %b %d %r")
 
 # send saxx msgs to tg
